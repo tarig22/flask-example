@@ -18,7 +18,11 @@ app = Flask(__name__)
 def index():
 
     # Render HTML with count variable
-    return  getData() , 200, {'Content-Type': 'text/html; charset=UTF-8'}
+    response = flask.jsonify(getData())
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
+
+    # return  getData() , 200, {'Content-Type': 'text/html; charset=UTF-8'}
     # return render_template("index.html", data=getData())
 
 
