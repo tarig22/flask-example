@@ -17,13 +17,9 @@ app = Flask(__name__)
 @app.route("/")
 def index():
 
-    # Render HTML with count variable
-    response = flask.jsonify(getData())
-    response.headers.add('Access-Control-Allow-Origin', '*')
-    return response
 
-    # return  getData() , 200, {'Content-Type': 'text/html; charset=UTF-8'}
-    # return render_template("index.html", data=getData())
+    return  getData() , 200, {'Content-Type': 'text/html; charset=UTF-8'}
+#     return render_template("index.html", data=getData())
 
 
 if __name__ == "__main__":
