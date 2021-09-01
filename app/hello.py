@@ -1,29 +1,28 @@
 # -*- coding:utf-8 -*-
 
-import platform
-import subprocess
-from flask import Flask, Response, request
+from flask import Flask, render_template
+import requests
+
+def getData():
+    url = requests.get("https://www.as-goal.com/m/").text
+    x = url.find("<div id=\"Today\"")
+    y = url.find("<div id=\"Tomorrow\"")
+
+   
+    return  url[x:y]
+
+
 app = Flask(__name__)
 
 @app.route("/")
-def headers():
-    return '<br/>'.join(['%s => %s' % (key, value) for (key, value) in request.headers.items()])
+def index():
 
-@app.route("/favicon.ico")
-def favicon():
-    resp = Response(status=200, mimetype='image/png')
-    return resp
+    # Render HTML with count variable
+    return  getData() , 200, {'Content-Type': 'text/html; charset=UTF-8'}
+    # return render_template("index.html", data=getData())
 
-@app.route("/pyver")
-def pyver():
-    return platform.python_version()
-
-@app.route("/tag")
-def tag():
-    p = subprocess.Popen(['git', 'describe', '--tags', '--abbrev=0'], stdout=subprocess.PIPE)
-    p.wait()
-    return p.stdout.read()
 
 if __name__ == "__main__":
+    app.debug = True
     app.run()
 
