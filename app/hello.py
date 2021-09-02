@@ -17,7 +17,7 @@ CORS(app, support_credentials=True)
 @app.route("/" , methods=['POST', 'GET','OPTIONS'])
 @cross_origin(supports_credentials=True)
 def index():
-    return  esponse , getData() , 200, {'Content-Type': 'text/html; charset=UTF-8'}
+    return getData() , 200, {'Content-Type': 'text/html; charset=UTF-8'}
 #     return render_template("index.html", data=getData())
 
 
