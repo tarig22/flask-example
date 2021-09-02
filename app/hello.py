@@ -15,7 +15,7 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     esponse.headers.add("Access-Control-Allow-Origin", "*")
-    return  getData() , 200, {'Content-Type': 'text/html; charset=UTF-8'}
+    return  esponse , getData() , 200, {'Content-Type': 'text/html; charset=UTF-8'}
 #     return render_template("index.html", data=getData())
 
 
