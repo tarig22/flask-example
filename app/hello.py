@@ -18,6 +18,7 @@ app = Flask(__name__)
 CORS(app)
 
 @app.route("/")
+@cross_origin()
 def index():
 
     return  getData() , 200, {'Content-Type': 'text/html; charset=UTF-8'}
