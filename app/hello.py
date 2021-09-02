@@ -1,6 +1,8 @@
 # -*- coding:utf-8 -*-
 
 from flask import Flask, render_template
+from flask_cors import CORS, cross_origin
+
 import requests
 
 def getData():
@@ -13,10 +15,10 @@ def getData():
 
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/")
 def index():
-
 
     return  getData() , 200, {'Content-Type': 'text/html; charset=UTF-8'}
 #     return render_template("index.html", data=getData())
@@ -24,6 +26,5 @@ def index():
 
 if __name__ == "__main__":
     app.debug = True
-    app.config['CORS_ORIGINS'] = "*"
     app.run()
 
