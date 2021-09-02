@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 
 from flask import Flask, render_template
-from flask_cors import CORS, cross_origin
+from flask_cors import cross_origin
 
 import requests
 
@@ -9,13 +9,10 @@ def getData():
     url = requests.get("https://www.as-goal.com/m/").text
     x = url.find("<div id=\"Today\"")
     y = url.find("<div id=\"Tomorrow\"")
-
-   
     return  url[x:y]
 
 
 app = Flask(__name__)
-CORS(app)
 
 @app.route("/")
 @cross_origin()
