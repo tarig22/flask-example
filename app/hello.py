@@ -8,7 +8,7 @@ def getData():
     url = requests.get("https://www.as-goal.com/m/").text
     x = url.find("<div id=\"Today\"")
     y = url.find("<div id=\"Tomorrow\"")
-    return  url[x:y]
+    return  "url[x:y]"
 
 
 app = Flask(__name__)
